@@ -25,6 +25,12 @@ class VerdurasController extends Controller
     //}
 
     public function guardar(Request $request){
+
+        $this -> validate($request, [
+            'nombre' => 'required|min:3|max:7' ,
+            'precio' => 'required|integer'
+        ]);
+
         return "Nombre: ". $request->input("nombre"). ", Precio: ". $request->input("precio");
     }
 }

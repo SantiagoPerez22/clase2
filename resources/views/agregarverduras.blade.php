@@ -13,6 +13,13 @@
     <label for="precio">precio</label>
     <input type="text" id="precio" name="precio">
     <button type="submit">Guardar</button>
+    @if($errors->any())
+    <div>
+        @foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </div>
+    @endif
 </form>
 
 <hr>
