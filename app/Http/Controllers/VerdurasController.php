@@ -3,12 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Verdura;
+use App\Models\Almacen;
 
 class VerdurasController extends Controller
 {
+    //public function index(){
+    //    return view('verduras')
+    //    ->with('verduras', array('lechuga', 'tomate', 'palta', 'papa'));
+    //}
+
     public function index(){
-        return view('verduras')
-        ->with('verduras', array('lechuga', 'tomate', 'palta', 'papa'));
+        $verduras = Verdura::where('id', 2)
+        ->get()
+        ->load('almacenes');
+
+        dd($verduras[0]->almacenes->nombre);
     }
 
     public function agregar(){
